@@ -1,0 +1,632 @@
+
+
+
+@import "_variables"
+@import "_mixin"
+@import "_fonts"
+
+
+
+
+
+/* General styles */
+ul, body, p
+  margin: 0
+  padding: 0
+
+body
+  font: 400 20px 'Droid Sans', sans-serif
+  line-height: 1.5em
+  background-color: $bodyColor
+  -webkit-touch-callout: none 
+  -webkit-user-select: none    
+  -khtml-user-select: none     
+  -moz-user-select: none      
+  -ms-user-select: none      
+  user-select: none   
+  overflow-x: hidden      
+
+/*Header styles*/
+header
+  z-index: 11
+  width: 100vw
+  height: 80px
+  background: $headerColor
+  position: fixed
+  top: 0
+  .navigation
+    width: 0
+    height: 100%
+    position: fixed
+    top: 0
+    left: 0
+    background-color: $sideMenuColor
+    transition: all 800ms cubic-bezier(0.9,0,0.33,1)
+    &.navigation-open
+      width: 18%
+      opacity: 1
+      border-bottom-right-radius: 70%
+      border-top-right-radius: 20%
+      box-shadow: 0 0 10px rgba(0,0,0,3.5)
+      transition: all 800ms cubic-bezier(0.9,0,0.33,1)
+      & .navigation-ul
+        position: relative
+        opacity: 1
+        visibility: visible
+        z-index: 10
+        transform: rotateY(0) translateX(0)
+      .topBar
+        background: $headerColor
+        top: 21px
+        transform: rotate(45deg)
+      .middleBar
+        width: 0
+        background: $headerColor
+        top: 22px
+        opacity: 0
+        visibility: hidden
+        transform: translateX(30px)
+      .bottomBar
+        background: $headerColor
+        width: 45px
+        top: 21px
+        transform: rotate(-45deg)
+      & .navigation__social
+        .navigation__social-ul
+          opacity: 1
+          visibility: visible
+          position: relative
+          transform: rotateY(0) translateX(0)
+          li 
+            opacity: 1
+            visibility: visible  
+            z-index: 10
+            transform: translateY(0px)
+            position: relative
+
+    & .navigation-ul
+      opacity: 0
+      visibility: hidden
+      padding: 2px
+      margin: 40% 18% 0 11%
+      transform: rotateY(-90deg) translateX(-300px)
+      transition: all 800ms cubic-bezier(0.9,0,0.33,1)
+      color: $standartColor
+      &::before
+        @include hoverLine(0, 0, 100%)
+      &:hover::before
+        @include hoverLine(0, 1, 100%)
+      &::after
+        @include hoverLine(0, 0, 0)
+      &:hover::after
+        @include hoverLine(0, 1, 0)
+      li 
+        list-style: none
+      a 
+        display: block
+        font-size: 30px
+        font-weight: 700
+        text-transform: uppercase
+        text-decoration: none
+        color: black
+        margin-top: 10px
+        margin-bottom: 15px
+        &:hover
+          color: $standartColor
+          transition: all 0.3s
+    & .navigation__social
+      position: relative
+      height: 30px
+      position: absolute
+      bottom: 30%
+      left: 11%
+      & .navigation__social-ul
+        list-style: none
+        position: relative
+        opacity: 0
+        visibility: hidden   
+        transform: rotateY(-90deg) translateX(-300px)   
+        transition: all 800ms cubic-bezier(.9, 0, .33, 1)
+        li 
+          display: inline-block
+          margin-right: 10px
+          position: relative
+          opacity: 0
+          visibility: hidden   
+          transform: translateY(35px)   
+          transition: all 800ms cubic-bezier(.9, 0, .33, 1)
+          .social-icon
+            width: 30px
+            height: 30px
+            display: block
+            position: relative
+            text-decoration: none
+            font-size: 30px
+            color: $headerColor
+            position: relative
+            &:hover
+              color: $standartColor
+              transition: all 0.3s
+
+  .navigation-icon
+    z-index: 10
+    width: 45px
+    height: 65px
+    margin-left: 25px
+    position: absolute
+    left: 58%
+    top: 2%
+    cursor: pointer
+    .topBar
+      @include burgerLine(45px, 2px, 10px)
+    .middleBar
+      @include burgerLine(45px, 1.5px, 20px)
+    .bottomBar
+      @include burgerLine(35px, 2px, 30px)
+  & nav .nav__menu
+    width: 70%
+    margin: 0 auto
+    display: flex
+    justify-content: space-around
+    list-style-type: none
+    line-height: 80px
+    & .nav__menu-item
+      flex-direction: row
+      text-decoration: none
+      color: $standartColor
+      &::before
+        @include hoverLine(22px, 0, 100%, #b7b7b7)
+      &:hover::before
+        @include hoverLine(22px, 1, 100%, #b7b7b7)
+      &:hover
+        color: $sideMenuColor
+        transition: all 0.3s
+
+
+/*Main container*/
+
+main 
+  width: 75%
+  margin: 0 auto
+
+/*Backround vectors*/
+
+.vector_1
+  width: 36%
+  position: absolute
+  right: 0
+  top: 77px
+.vector_2
+  width: 83%
+  position: absolute
+  top: 77px
+  left: 261px
+  transform: rotate(0deg)
+
+/*b-animation styles*/
+
+.b-animation
+  margin-top: 140px
+  display: flex
+  justify-content: space-between
+  margin-bottom: 100px
+  .b-animation__text
+    font-size: 18px
+    max-width: 60%
+    margin-right: 50px
+    span
+      font-size: 45px
+      animation: 1.2s gradText infinite
+      &:first-child
+        animation-delay: .15s
+      &:nth-child(2)
+        animation-delay: .30s
+      &:nth-child(3)
+        animation-delay: .45s
+      &:nth-child(4)
+        animation-delay: .60s
+      &:nth-child(5)
+        animation-delay: .75s
+      &:nth-child(6)
+        animation-delay: .90s
+      &:nth-child(7)
+        animation-delay: 1.05s
+      &:nth-child(8)
+        animation-delay: 1.20s
+      &:nth-child(9)
+        animation-delay: 1.35s
+      &:last-child
+        animation-delay: 1.45s
+    p
+      padding-top: 25px
+  .b-animation__preloader
+    width: 40%
+    border: 3px solid $sideMenuColor
+    background: $standartColor
+    z-index: 10
+    position: relative
+    div
+      display: flex
+      justify-content: center
+      align-items: center
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      span 
+        display: block
+        height: 12px
+        width: 12px
+        background: #000
+        margin: 0 4px
+        border-radius: 10px
+        animation: 1.2s upDown infinite
+        &:first-child
+          animation-delay: .15s
+        &:nth-child(2)
+          animation-delay: .30s
+        &:nth-child(3)
+          animation-delay: .45s
+        &:nth-child(4)
+          animation-delay: .60s
+        &:last-child
+          animation-delay: .75s
+
+@keyframes gradText
+  0%
+    color: $keyColor1
+  50%
+    color: $keyColor2
+  100%
+    color: $keyColor3
+
+@keyframes upDown
+  0%
+    height: 12px
+    background: #00bdad
+  50%
+    height: 45px
+    background: #006db5
+  100%
+    height: 12px
+    background: #0011ad
+
+
+  /* Pictures / Flex box*/
+
+.pictures
+  padding-top: 100px
+  padding-bottom: 100px
+  display: flex
+  justify-content: space-between
+  border-top: 1px solid black
+  .pictures__text
+    order: 2
+    margin: auto 60px
+    h1
+      text-align: center
+      margin-top: 0
+    p 
+      margin-bottom: 0
+  .pictures__column-1
+    order: 1
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+  .pictures__column-2
+    order: 3
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+  .pictures__item
+    width: 300px
+    height: 200px
+    box-shadow: 0 0 10px rgba(0,0,0,3.5)
+
+  /* Contacts block / CCS grid */
+
+.contacts__block
+  padding-top: 100px
+  padding-bottom: 100px
+  border-top: 1px solid black
+  display: grid
+  grid-template-columns: 1fr 1fr
+  .contacts__block-l
+    width: 100%
+    height: 582px
+    justify-self: end
+    background: url(../img/contacts_img/contacts-img.jpg) no-repeat center
+    background-size: cover
+    display: grid
+    grid-template-columns: 1fr
+    grid-template-rows: 1fr
+    .grid
+      justify-self: center
+      align-self: center
+      display: grid
+      grid-template-columns: 1fr
+      grid-template-rows: auto
+      grid-gap: 30px
+      .contacts__block-1_item
+        color: $standartColor
+        display: flex
+        font-size: 16px
+        letter-spacing: 1.5px
+        font-family: Verdana
+        img
+          margin-right: 30px
+
+  .contacts__block-2
+    width: 100%
+    height: 582px
+    background: #3b7cff
+    .contacts__block-2_headline
+      margin-top: 40px
+      margin-bottom: 30px
+      font-family: Verdana
+      font-style: normal
+      font-weight: normal
+      font-size: 35px
+      line-height: 40px
+      text-align: center
+      color: $standartColor
+    #contactform
+      text-align: center
+      input:focus, textarea:focus
+        outline: 3px solid #002673
+        box-shadow: 0 0 10px rgba(0,0,0,3.5)
+        background: $standartColor !important
+      .form-1
+        width: 358px
+        height: 46px
+        margin-bottom: 22px
+        padding-left: 16px
+        color: black
+        border: none
+        transition: all 0.3s 
+        &:hover
+          background: #f0f0f0
+      .form-2
+        padding: 16px
+        width: 343px
+        height: 145px
+        border: none
+        margin-bottom: 10px
+        resize: none
+        font-family: Verdana
+      .btn 
+        font-size: 16px
+        font-family: Verdana
+        line-height: 24px
+        color: $standartColor
+        background-color: $headerColor
+        border: none
+        padding: 10px 21px
+        cursor: pointer
+        border-radius: 5px
+        box-shadow: 0 0 10px rgba(0,0,0,3.5)
+        transition: all 0.3s 
+        &:focus
+          background-color: #000c24
+          outline: none
+        &:hover
+          border-left: 1px solid $standartColor
+          border-right: 1px solid $standartColor
+
+  /* Footer */
+
+.footer 
+  width: 100%
+  height: 200px
+  background: $headerColor
+  display: flex
+  justify-content: space-around
+  .footer_contacts
+    display: flex
+    flex-direction: column
+    font-family: Verdana
+    line-height: 1.2em
+    justify-content: center
+    .footer_contacts-phone
+      font-size: 20px
+      color: $phoneColor
+      .footer_contacts-op
+        font-size: 14px
+        color: $standartColor
+
+  .footer_social-net
+    display: flex
+    flex-direction: row
+    align-items: center
+    color: $standartColor
+    .footer_icons
+      font-size: 45px
+      color: $phoneColor
+      margin-left: 35px
+      transition: all 0.5s
+      &:hover
+        color: $standartColor
+        transform: rotate(360deg)
+
+/*Media queries*/
+
+@media screen and (max-width: 1320px)
+  .pictures .pictures__text p
+    font-size: 15px
+
+
+@media screen and (max-width: 1200px)
+  header .navigation.navigation-open
+    width: 25%
+
+  header .navigation .navigation-ul a
+    font-size: 24px
+    letter-spacing: 2px
+
+  .pictures
+    flex-direction: column
+    .pictures__column-1, .pictures__column-2
+      flex-direction: row
+    .pictures__text
+      margin-bottom: 15px
+
+  .contacts__block .contacts__block-l .grid .contacts__block-1_item
+    font-size: 13px
+    letter-spacing: 1.3px
+
+  .contacts__block .contacts__block-l .grid .contacts__block-1_item img
+    margin-right: 20px
+
+  .contacts__block .contacts__block-2 #contactform .form-1
+    width: 300px
+    height: 38px
+  .contacts__block .contacts__block-2 #contactform .form-2
+    width: 287px
+    height: 138px
+  .footer .footer_contacts .footer_contacts-phone
+    font-size: 17px
+  .footer .footer_social-net .footer_icons
+    font-size: 40px
+
+  .b-animation__text
+    span 
+      font-size: 40px
+    p
+      font-size: 15px
+
+  header .navigation .navigation-ul a
+    font-size: 22px
+    letter-spacing: 2px
+
+  header nav .nav__menu .nav__menu-item
+    font-size: 18px
+
+  header .navigation .navigation__social .navigation__social-ul li
+    margin-right: 0
+
+  header .navigation .navigation__social .navigation__social-ul li .social-icon
+    font-size: 21px
+
+  .pictures .pictures__item
+    width: 237px
+    height: 169px
+
+@media screen and (max-width: 998px)
+  .contacts__block .contacts__block-l .grid .contacts__block-1_item
+    font-size: 11px
+    letter-spacing: 1.1px
+  .contacts__block .contacts__block-l 
+    height: 459px
+  .contacts__block .contacts__block-2
+    height: 459px
+  .contacts__block .contacts__block-l .grid
+    grid-gap: 8px 
+  .contacts__block .contacts__block-2 .contacts__block-2_headline
+    margin-top: 20px
+    margin-bottom: 17px
+    font-size: 30px
+  .contacts__block .contacts__block-2 #contactform .form-1
+    margin-bottom: 13px
+    width: 249px
+    height: 30px
+  .contacts__block .contacts__block-2 #contactform .form-2
+    width: 235px
+    height: 119px
+  .contacts__block .contacts__block-2 #contactform .btn
+    font-size: 14px
+    padding: 7px 19px
+
+
+@media screen and (max-width: 768px)
+  .pictures .pictures__text h1
+    margin-top: 15px
+
+  header .navigation.navigation-open
+    width: 30%
+
+  .contacts__block
+    grid-template-columns: 1fr
+  .contacts__block .contacts__block-l .grid
+    grid-gap: 15px
+  .contacts__block .contacts__block-l .grid .contacts__block-1_item
+    font-size: 14px
+    letter-spacing: 1.4px
+  .contacts__block .contacts__block-2 #contactform
+    display: flex
+    flex-direction: column
+    align-items: center
+  .footer .footer_contacts .footer_contacts-phone
+    font-size: 15px
+
+@media screen and (max-width: 664px)
+  .b-animation
+    flex-direction: column
+    .b-animation__text
+      max-width: 100%
+      margin-right: 0
+    .b-animation__preloader
+      margin-top: 15px
+      width: 100%
+      height: 250px
+
+  .b-animation .b-animation__text span
+    font-size: 38px
+  .pictures .pictures__column-1, .pictures .pictures__column-2
+    flex-direction: column
+    align-items: center
+  .pictures .pictures__item
+    margin-bottom: 15px
+    width: 350px
+    height: 190px
+
+@media screen and (max-width: 576px)
+  header nav .nav__menu .nav__menu-item
+    font-size: 14px
+
+  header .navigation.navigation-open
+    width: 40%
+
+  .pictures .pictures__text
+    margin: 15px auto
+
+  p 
+    font-size: 14px
+
+@media screen and (max-width: 426px)
+  header .navigation.navigation-open
+    width: 46%
+  header 
+    height: 48px
+    nav .nav__menu
+      display: none
+    .navigation-icon
+      margin-left: 15px
+      top: 0.5%
+
+  .contacts__block .contacts__block-l .grid .contacts__block-1_item p 
+    font-size: 11px
+  .contacts__block .contacts__block-l .grid .contacts__block-1_item img
+    margin-right: 13px
+
+
+  .footer .footer_social-net .footer_icons
+    margin-left: 17px
+    font-size: 33px
+
+@media screen and (max-width: 375px)
+  header .navigation.navigation-open
+    width: 54%
+  .pictures .pictures__item
+    width: 284px
+    height: 175px
+  .contacts__block .contacts__block-l .grid .contacts__block-1_item p 
+    font-size: 10px
+  .contacts__block .contacts__block-2 #contactform .form-2
+    width: 187px
+  .contacts__block .contacts__block-2 #contactform .form-1
+    width: 200px
+
+  .footer .footer_contacts .footer_contacts-phone
+    font-size: 13px
+
+
